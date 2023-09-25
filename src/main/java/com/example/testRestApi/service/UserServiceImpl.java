@@ -1,5 +1,6 @@
 package com.example.testRestApi.service;
 
+import com.example.testRestApi.exception.UserExistingEmailException;
 import com.example.testRestApi.exception.UserNotFoundException;
 import com.example.testRestApi.model.Users;
 import com.example.testRestApi.repo.UserRepo;
@@ -15,6 +16,9 @@ public class UserServiceImpl implements  UserService{
     UserRepo userRepo; // for connect to DB
     @Override
     public Long save(Users user) {
+        if(user.getEmail().equals(userRepo.findByEmail(user.getEmail()).get().getEmail()))
+            throw new UserExistingEmailException("there is user with the same email");
+
         long id = userRepo.save(user).getId();
         return id;
     }
