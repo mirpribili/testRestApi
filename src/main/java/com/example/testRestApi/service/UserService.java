@@ -1,11 +1,12 @@
 package com.example.testRestApi.service;
 
 import com.example.testRestApi.model.Users;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Map;
 
 public interface UserService {
-    Long save(Users user);
-    Users findById(long id);
-    Map<String,String> updateUser(long id);
+    ResponseEntity<Object> save(Users user);
+    ResponseEntity<Object> findById(long id);
+    ResponseEntity<Object> updateUser(long id);
 }
