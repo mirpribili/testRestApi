@@ -1,6 +1,7 @@
 package com.example.testRestApi.controller;
 
 import com.example.testRestApi.model.Users;
+import com.example.testRestApi.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,10 +17,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @WebMvcTest(Controller.class)
 class ControllerTest {
 
+
     @Autowired
     private MockMvc mvc;
     @Test
-    void getUser() throws Exception {
+    void getUserTestController() throws Exception {
         MockHttpServletResponse response =
                 mvc.perform(MockMvcRequestBuilders
                 .get("/user")
